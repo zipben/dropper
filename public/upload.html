@@ -33,20 +33,27 @@
 
         .logout-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 8px 16px;
-            background: #dc3545;
-            color: white;
+            top: 15px;
+            right: 15px;
+            padding: 6px;
+            background: transparent;
+            color: #666;
             border: none;
-            border-radius: 5px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 18px;
         }
 
         .logout-button:hover {
-            background: #c82333;
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            transform: scale(1.1);
         }
 
         .drop-zone {
@@ -125,7 +132,6 @@
 </head>
 <body>
     <div class="container">
-        <button class="logout-button" id="logoutButton">Logout</button>
         <div class="drop-zone" id="dropZone">
             <div class="icon">📁</div>
             <p>Drag and drop MP3 files here</p>
