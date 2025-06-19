@@ -1,0 +1,34 @@
+version: '3.8'
+
+# Configure your host system path by changing the 'device' field under volumes
+volumes:
+  mp3_storage:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      # Change this path to your desired location on the host system
+      device: /Users/benjamindonaldson/Documents/TestMP3Storage
+
+services:
+  mp3-dropper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - AUTH_USERNAME=admin
+      - AUTH_PASSWORD=changeme
+      - UPLOAD_PATH=/data/uploads
+    volumes:
+      - mp3_storage:/data/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s 
