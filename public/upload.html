@@ -151,15 +151,6 @@
         const status = document.getElementById('status');
         const metadata = document.getElementById('metadata');
         const metadataContent = document.getElementById('metadataContent');
-        const logoutButton = document.getElementById('logoutButton');
-
-        // Handle logout
-        logoutButton.addEventListener('click', () => {
-            // Clear session storage
-            sessionStorage.removeItem('auth');
-            // Redirect to login page
-            window.location.href = '/';
-        });
 
         // Check authentication on page load
         fetch('/check-auth', {
